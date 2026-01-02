@@ -25,3 +25,23 @@ Unlike black-box AI tools, R3sum3OS focuses on:
 ## 🧩 Architecture
 
 # R3sum3OS
+Input → Normalize → Analyze → Rewrite → Render → Export
+
+
+Each stage is modular and replaceable.
+
+---
+
+## 🛠️ Installation
+
+```bash
+git clone https://github.com/YOUR_USERNAME/resumeos.git
+cd resumeos
+pip install -r requirements.txt
+
+▶️ Run Locally
+python app.py
+
+☁️ Run in Google Colab
+
+Open notebooks/ResumeOS_Colab.ipynb and run all cells.
