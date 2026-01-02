@@ -63,6 +63,7 @@ Important rules:
 - The same input always produces the same output
 
 This improves clarity and professionalism without changing your story.
+
 ---
 
 [+] Clean, Professional PDF Resume Export  
@@ -218,23 +219,27 @@ The interface runs entirely in the browser.
 ```bash
 pip install -r requirements.txt
 Run ResumeOS Locally
-bash
-Copy code
 python app.py
+
+
 After running the command, a local web interface will open in your browser.
 
-Who This Project Is For
-College students
+### Who This Project Is For
 
-Recent graduates
+- College students
 
-Career changers
+- Recent graduates
 
-Educators teaching resume fundamentals
+- Career changers
 
-Developers interested in explainable systems
+- Educators teaching resume fundamentals
 
-Design Philosophy
+- Developers interested in explainable systems
+
+---
+
+***Design Philosophy***
+
 ResumeOS is built around these principles:
 
 Deterministic output over generative randomness
