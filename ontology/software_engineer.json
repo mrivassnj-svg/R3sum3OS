@@ -1,1 +1,15 @@
+{
+  "python": "core_skill",
+  "java": "core_skill",
+  "sql": "core_skill",
+  "docker": "tool",
+  "kubernetes": "tool",
+  "aws": "tool",
+  "git": "tool",
+  "rest": "methodology",
+  "microservices": "methodology",
+  "agile": "methodology",
+  "communication": "soft_skill",
+  "leadership": "soft_skill"
+}
 
