@@ -2,36 +2,48 @@ import pytest
 from collections import Counter
 from core.scorer import calculate_weighted_ats_score
 
-def test_perfect_match():
-    """If the resume contains everything in the JD, the score should be 100%."""
+# Mock weights for testing purposes
+MOCK_ONTOLOGY = {
+    "python": "technical_skill",
+    "sql": "technical_skill",
+    "docker": "tool",
+    "communication": "soft_skill"
+}
+
+def test_perfect_match_score():
+    """Verify that a perfect overlap results in a 100% score."""
     resume = Counter(["python", "sql", "docker"])
     jd = Counter(["python", "sql", "docker"])
-    ontology = {"python": "technical_skill", "sql": "technical_skill", "docker": "tool"}
     
-    score = calculate_weighted_ats_score(resume, jd, ontology)
+    score = calculate_weighted_ats_score(resume, jd, MOCK_ONTOLOGY)
     assert score == 100
 
-def test_zero_match():
-    """If there is no overlap, the score should be 0%."""
-    resume = Counter(["cooking", "painting"])
-    jd = Counter(["python", "sql"])
-    ontology = {"python": "technical_skill", "sql": "technical_skill"}
-    
-    score = calculate_weighted_ats_score(resume, jd, ontology)
-    assert score == 0
-
 def test_partial_match_weighting():
-    """Verify that different categories impact the score differently."""
-    # weights: technical=1.0, other=0.1
-    ontology = {"python": "technical_skill", "teamwork": "other"}
+    """Verify that technical skills carry more weight than tools or others."""
+    jd = Counter(["python", "docker"])
     
-    jd = Counter(["python", "teamwork"])
-    # Case 1: Match the high-weight skill
-    resume_high = Counter(["python"])
-    score_high = calculate_weighted_ats_score(resume_high, jd, ontology)
+    # Match ONLY the technical skill (Weight 1.0)
+    high_weight_resume = Counter(["python"])
+    high_score = calculate_weighted_ats_score(high_weight_resume, jd, MOCK_ONTOLOGY)
     
-    # Case 2: Match the low-weight skill
-    resume_low = Counter(["teamwork"])
-    score_low = calculate_weighted_ats_score(resume_low, jd, ontology)
+    # Match ONLY the tool (Weight 0.7)
+    low_weight_resume = Counter(["docker"])
+    low_score = calculate_weighted_ats_score(low_weight_resume, jd, MOCK_ONTOLOGY)
     
-    assert score_high > score_low
+    assert high_score > low_score
+
+def test_frequency_capping():
+    """Ensure that repeating a keyword in the resume doesn't 'cheat' the score."""
+    jd = Counter(["python"]) # JD only asks for it once
+    resume = Counter(["python", "python", "python"]) # Candidate says it thrice
+    
+    score = calculate_weighted_ats_score(resume, jd, MOCK_ONTOLOGY)
+    assert score == 100 # Should not exceed 100% based on over-repetition
+
+def test_zero_match_score():
+    """Verify that no overlap results in a 0% score."""
+    resume = Counter(["cooking", "gardening"])
+    jd = Counter(["python", "sql"])
+    
+    score = calculate_weighted_ats_score(resume, jd, MOCK_ONTOLOGY)
+    assert score == 0
