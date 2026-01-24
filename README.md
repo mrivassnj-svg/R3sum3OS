@@ -1,19 +1,25 @@
-# R3sum3OS (pronounced *re-soo-me-ohs*): Ontology-Driven Resume Intelligence System
+# R3sum3OS: Ontology-Driven Resume Optimization
 
-## 🚀 Overview
-**R3sum3OS** is a specialized framework designed to bridge the gap between unstructured resume data and professional job requirements. Unlike standard keyword scanners, this system utilizes a formal **ontology-driven approach** to perform "system resolution," ensuring a semantic match between candidate skills and industry standards.
+## 🚀 System Overview
+**R3sum3OS** is an intelligent resume optimization framework that utilizes "system resolution" to bridge the gap between candidate data and industry-standard job ontologies. Unlike traditional keyword matching, this system performs a semantic alignment of skills and experience.
 
-## 🛠️ Key Deliverables
-* **System Resolution Engine (`/resumeos`):** Maps parsed resume data against target job descriptions via semantic alignment.
-* **Semantic Parser (`/core`):** Transforms unstructured text into machine-readable JSON objects.
-* **Ontology Framework (`/ontology`):** A structured skill hierarchy (e.g., `software_engineer.json`) for precise role matching.
-* **Interactive UI (`app.py`):** A Gradio-powered web interface for real-time resume optimization.
+## 🛠️ Repository Architecture
+* **`core/parser.py`**: The semantic engine that extracts and normalizes resume data.
+* **`ontology/`**: Contains role-specific JSON schemas (e.g., `software_engineer.json`) used for system resolution.
+* **`resumeos/`**: The main logic module that handles full system resolution and score mapping.
+* **`app.py`**: A Gradio-powered web interface for interactive resume processing.
+* **`tests/`**: Automated validation suite ensuring parser reliability via `test_parser.py`.
 
-## 📦 Installation
-1. Clone the repository:
-   ```bash
-   git clone [https://github.com/mrivassnj-svg/R3sum3OS.git](https://github.com/mrivassnj-svg/R3sum3OS.git)
+## 📦 Requirements & Setup
+This project requires Python 3.x and the following core dependencies:
+* **Gradio**: For the web-based user interface.
+* **fpdf2**: For programmatic generation of optimized PDF documents.
 
+### Installation
+```bash
+git clone [https://github.com/mrivassnj-svg/R3sum3OS.git](https://github.com/mrivassnj-svg/R3sum3OS.git)
+pip install -r requirements.txt
+python app.py
 ------------------------------------------------------------
 
 ## Why ResumeOS Exists
