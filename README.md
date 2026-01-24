@@ -1,260 +1,74 @@
-# R3sum3OS: Ontology-Driven Resume Optimization
+# R3sum3OS: Ontology-Driven Resume Intelligence System
 
-## 🚀 System Overview
-**R3sum3OS** is an intelligent resume optimization framework that utilizes "system resolution" to bridge the gap between candidate data and industry-standard job ontologies. Unlike traditional keyword matching, this system performs a semantic alignment of skills and experience.
+🚀 **Bridging the gap between candidate data and industry-standard job ontologies.**
+
+R3sum3OS is an intelligent resume optimization framework that utilizes "system resolution" to align experience with job requirements. Unlike traditional keyword scanners, this system performs semantic alignment of skills and experience without the "black box" randomness of Generative AI.
+
+---
 
 ## 🛠️ Repository Architecture
 * **`core/parser.py`**: The semantic engine that extracts and normalizes resume data.
-* **`ontology/`**: Contains role-specific JSON schemas (e.g., `software_engineer.json`) used for system resolution.
-* **`resumeos/`**: The main logic module that handles full system resolution and score mapping.
-* **`app.py`**: A Gradio-powered web interface for interactive resume processing.
+* **`ontology/`**: Role-specific JSON schemas (e.g., `software_engineer.json`) for system resolution.
+* **`resumeos/`**: The main logic module handling full system resolution and score mapping.
+* **`app.py`**: A Gradio-powered web interface for interactive processing.
 * **`tests/`**: Automated validation suite ensuring parser reliability via `test_parser.py`.
 
-## 📦 Requirements & Setup
-This project requires Python 3.x and the following core dependencies:
-* **Gradio**: For the web-based user interface.
-* **fpdf2**: For programmatic generation of optimized PDF documents.
+---
 
-### Installation
-```bash
-git clone [https://github.com/mrivassnj-svg/R3sum3OS.git](https://github.com/mrivassnj-svg/R3sum3OS.git)
-pip install -r requirements.txt
-python app.py
-------------------------------------------------------------
-
-## Why ResumeOS Exists
-
-Many resume tools today:
-- Automatically rewrite content without explanation
-- Hide scoring logic
-- Use large language models that may invent skills or experience
-
-ResumeOS takes a different approach.
-
-It focuses on:
-- Transparency
-- Control
-- Repeatable results
-- ATS compatibility
-
-If you want to *understand* why your resume scores the way it does — not just
-accept an output — ResumeOS is built for you.
-
-------------------------------------------------------------
-
-## Key Features
-
-[+] ATS Keyword Normalization and Scoring  
-ResumeOS scans the job description and your resume text to identify important
-keywords commonly used by ATS software.
-
-It calculates a match score based on how many relevant keywords overlap between
-the job posting and your resume. This score is fully explainable and reproducible.
+## 💡 Why R3sum3OS Exists
+Many modern resume tools rewrite content without explanation or use LLMs that "invent" experience. R3sum3OS is built for:
+* **Transparency**: Understand *why* you score the way you do.
+* **Control**: You maintain the narrative; the system handles the optimization.
+* **Determinism**: The same input always produces the same high-quality output.
+* **ATS Compatibility**: Engineered for machine-readability first.
 
 ---
 
-[+] Job-to-Resume Keyword Gap Analysis  
-ResumeOS shows:
-- Keywords found in both the job description and your resume
-- Keywords that appear in the job description but are missing from your resume
+## ✨ Key Features
 
-This makes it easy to see what skills or terms you may need to add or clarify.
+### [+] ATS Keyword Normalization & Scoring
+Scans job descriptions and resume text to identify critical overlaps. It calculates a match score that is fully explainable and reproducible.
 
----
+### [+] Job-to-Resume Gap Analysis
+Identifies exactly what is missing. The system highlights "Matched Keywords" vs. "Missing Gaps," giving you a clear roadmap for manual adjustments.
 
-[+] Deterministic Bullet Rewriting with Action Verbs  
-Raw experience text is rewritten into stronger resume bullets using a fixed list
-of professional action verbs.
+### [+] Deterministic Bullet Rewriting
+Raw experience is transformed using a fixed list of professional action verbs. 
+* **Rule 1**: No new experience is invented.
+* **Rule 2**: Meaning is preserved.
+* **Rule 3**: ATS-friendly action verbs are prioritized.
 
-Important rules:
-- No new experience is invented
-- Meaning is preserved
-- The same input always produces the same output
+### [+] Clean PDF Export
+Generates a conservative, high-compatibility PDF. It avoids tables, columns, and icons that typically break ATS scanners.
 
-This improves clarity and professionalism without changing your story.
 
----
-
-[+] Clean, Professional PDF Resume Export  
-ResumeOS generates a simple, professional PDF resume that:
-- Avoids tables, columns, icons, and graphics
-- Is compatible with ATS scanners
-- Works well for online applications and printing
-
-The formatting is intentionally conservative to maximize compatibility.
 
 ---
 
-[+] Interactive Web Interface (Gradio)  
-ResumeOS includes a browser-based interface where you can:
-- Enter resume information
-- Paste a job description
-- View an optimized resume preview
-- See an ATS match score
-- Download a PDF resume
+## 📐 System Architecture Overview
+R3sum3OS is a modular processing pipeline:
 
-No frontend or web development knowledge is required.
+1. **User Input** (Resume + Job Description)
+2. **Text Normalization** (Stopword removal & tokenization)
+3. **Bullet Rewrite Engine** (Action verb integration)
+4. **HTML Preview** (Real-time ATS score calculation)
+5. **PDF Export** (Final document generation via fpdf2)
 
 ---
 
-[+] Local, Colab, and Cloud-Friendly Execution  
-ResumeOS can be run:
-- Locally on your computer
-- In Google Colab
-- On cloud platforms
-
-No paid APIs or external AI services are required.
-
-------------------------------------------------------------
-
-## System Architecture Overview
-
-ResumeOS is intentionally modular and built as a clear processing pipeline:
-
-User Input
-    |
-    v
-Text Normalization and ATS Analysis
-    |
-    v
-Bullet Rewrite Engine
-    |
-    v
-HTML Resume Preview and ATS Score
-    |
-    v
-PDF Export Engine
-    |
-    v
-Downloadable Resume
-
-Each stage is independent and can be modified or replaced without breaking the
-entire system.
-
-------------------------------------------------------------
-
-## Module Breakdown (Plain English)
-
-### 1. Text Normalization and ATS Analysis
-
-Purpose:
-Extract meaningful keywords from the job description and compare them to the
-resume content.
-
-What it does:
-- Removes common stopwords that do not affect ATS scoring
-- Extracts words that are at least three characters long
-- Counts keyword matches and gaps
-
-Outputs:
-- ATS match percentage
-- Matched keywords
-- Missing (gap) keywords
-
-This makes the scoring logic transparent and easy to understand.
-
-------------------------------------------------------------
-
-### 2. Bullet Rewrite Engine (ATS-Safe)
-
-Purpose:
-Improve resume bullet points without changing meaning or adding false content.
-
-What it does:
-- Removes weak starting words (e.g., "helped", "worked on")
-- Prepends strong action verbs
-- Preserves original experience content
-
-Important:
-This engine does not generate new ideas or fabricate experience.
-
-------------------------------------------------------------
-
-### 3. PDF Export Engine
-
-Purpose:
-Create a professional resume file that works with ATS systems.
-
-What it does:
-- Uses simple fonts and spacing
-- Avoids layouts that break ATS parsing
-- Generates a downloadable PDF file
-
-The output is designed for real hiring systems, not visual flair.
-
-------------------------------------------------------------
-
-### 4. Orchestrator (System Controller)
-
-Purpose:
-Act as the central coordinator for the entire system.
-
-What it does:
-- Combines resume skills and experience
-- Runs ATS analysis
-- Generates rewritten bullets
-- Builds the HTML preview
-- Triggers PDF generation
-
-This function is the single source of truth for ResumeOS execution.
-
-------------------------------------------------------------
-
-### 5. Frontend (Gradio Web Interface)
-
-Purpose:
-Provide an accessible interface for users.
-
-Features:
-- Text fields for resume and job description input
-- Live ATS score display
-- Resume preview
-- One-click PDF download
-
-The interface runs entirely in the browser.
-
-------------------------------------------------------------
-
-## Installation and Setup
+## 📦 Installation and Setup
 
 ### Prerequisites
-- Python 3.9 or higher
-- pip package manager
+* Python 3.9 or higher
+* pip package manager
 
-------------------------------------------------------------
-
-### Install Dependencies
-
+### Setup
 ```bash
+# Clone the repository
+git clone [https://github.com/mrivassnj-svg/R3sum3OS.git](https://github.com/mrivassnj-svg/R3sum3OS.git)
+
+# Install Dependencies
 pip install -r requirements.txt
-Run ResumeOS Locally
+
+# Run Locally
 python app.py
-
-
-After running the command, a local web interface will open in your browser.
-
-### Who This Project Is For
-
-- College students
-
-- Recent graduates
-
-- Career changers
-
-- Educators teaching resume fundamentals
-
-- Developers interested in explainable systems
-
----
-
-***Design Philosophy***
-
-ResumeOS is built around these principles:
-
-Deterministic output over generative randomness
-
-Explainability over mystery
-
-Control over automation
-
-ATS compatibility over visual complexity
