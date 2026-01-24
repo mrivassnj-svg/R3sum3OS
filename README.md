@@ -1,15 +1,18 @@
-# ResumeOS (R3sum3OS)
+# R3sum3OS (pronounced *re-soo-me-ohs*): Ontology-Driven Resume Intelligence System
 
-ResumeOS (pronounced *re-soo-me-ohs*) is an open-source resume optimization system
-designed for students and early-career professionals.
+## 🚀 Overview
+**R3sum3OS** is a specialized framework designed to bridge the gap between unstructured resume data and professional job requirements. Unlike standard keyword scanners, this system utilizes a formal **ontology-driven approach** to perform "system resolution," ensuring a semantic match between candidate skills and industry standards.
 
-Its goal is simple:
-help you align your resume with Applicant Tracking Systems (ATS) in a clear,
-explainable, and reproducible way — without relying on black-box AI tools.
+## 🛠️ Key Deliverables
+* **System Resolution Engine (`/resumeos`):** Maps parsed resume data against target job descriptions via semantic alignment.
+* **Semantic Parser (`/core`):** Transforms unstructured text into machine-readable JSON objects.
+* **Ontology Framework (`/ontology`):** A structured skill hierarchy (e.g., `software_engineer.json`) for precise role matching.
+* **Interactive UI (`app.py`):** A Gradio-powered web interface for real-time resume optimization.
 
-ResumeOS does not guess, hallucinate, or invent experience.
-Every result is based on deterministic rules that you can inspect, understand,
-and trust.
+## 📦 Installation
+1. Clone the repository:
+   ```bash
+   git clone [https://github.com/mrivassnj-svg/R3sum3OS.git](https://github.com/mrivassnj-svg/R3sum3OS.git)
 
 ------------------------------------------------------------
 
