@@ -1,11 +1,30 @@
 """
-Defines the importance of different skill categories.
+Defines and applies weighting rules for resume scoring.
 """
 
-DEFAULT_WEIGHTS = {
-    "technical_skill": 1.0,  # Hard skills (Python, SQL)
-    "soft_skill": 0.5,       # Communication, Leadership
-    "tool": 0.7,             # Software (Docker, Git)
-    "certification": 1.2,    # High-value credentials
-    "other": 0.1             # General vocabulary
+from typing import Dict
+
+DEFAULT_WEIGHTS: Dict[str, float] = {
+    "technical_skill": 1.0,
+    "soft_skill": 0.5,
+    "tool": 0.7,
+    "certification": 1.2,
+    "other": 0.1
 }
+
+VALID_CATEGORIES = set(DEFAULT_WEIGHTS.keys())
+
+
+def score_skill(category: str, base_score: float = 1.0) -> float:
+    """
+    Apply category weight to a base score.
+
+    Args:
+        category: Skill category name
+        base_score: Raw score before weighting
+
+    Returns:
+        Weighted score
+    """
+    weight = DEFAULT_WEIGHTS.get(category, DEFAULT_WEIGHTS["other"])
+    return base_score * weight
