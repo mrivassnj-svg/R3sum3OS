@@ -28,3 +28,13 @@ def score_skill(category: str, base_score: float = 1.0) -> float:
     """
     weight = DEFAULT_WEIGHTS.get(category, DEFAULT_WEIGHTS["other"])
     return base_score * weight
+    from core.config import SCORING_WEIGHTS, PRECISION_LEVEL
+
+def score_skill(category: str, base_score: float = 1.0) -> float:
+
+    weight = SCORING_WEIGHTS.get(category, SCORING_WEIGHTS["other"])
+    weighted_score = base_score * weight
+    
+    return round(weighted_score, PRECISION_LEVEL)
+
+
