@@ -1,19 +1,18 @@
 """
-R3sum3OS Configuration Registry
-Centralized Named Constants for Scoring and Logic.
+R3sum3OS - Configuration Registry
+Centralized source of truth for scoring weights and precision.
 """
 
-# 2.6 Named Constants (Global weights)
-# These represent the "exchange rate" for different skill types
+# Consolidated weights from both previous versions
 SCORING_WEIGHTS = {
+    "core_skill": 3.0,
     "technical_skill": 1.5,
-    "core_skill": 3.0,      # High priority for job matching
-    "tool": 2.0,            # Standard proficiency
-    "methodology": 1.5,     # Process-oriented skills
-    "soft_skill": 1.0,      # Foundational skills
-    "certification": 1.2,   # Added value
-    "other": 0.5            # Default fallback
+    "tool": 2.0,
+    "methodology": 1.5,
+    "soft_skill": 1.0,
+    "certification": 1.2,
+    "other": 0.5
 }
 
-# 2.11 Rounding Precision
+# Precision for rounding numeric results
 PRECISION_LEVEL = 2
