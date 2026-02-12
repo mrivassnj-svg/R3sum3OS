@@ -1,34 +1,24 @@
 {
-  "mathematical_foundations": {
-    "statistics": "technical_skill",
-    "probability": "technical_skill",
-    "linear_algebra": "technical_skill",
-    "optimization": "technical_skill"
-  },
-  "machine_learning_specialties": {
-    "nlp": "core_skill",
-    "computer_vision": "core_skill",
-    "reinforcement_learning": "core_skill",
-    "predictive_modeling": "core_skill",
-    "time_series": "technical_skill"
-  },
-  "data_manipulation": {
-    "pandas": "tool",
-    "numpy": "tool",
-    "sql": "core_skill",
-    "spark": "tool",
-    "hadoop": "tool"
-  },
-  "visual_communication": {
-    "tableau": "tool",
-    "power_bi": "tool",
-    "matplotlib": "tool",
-    "plotly": "tool",
-    "storytelling": "soft_skill"
-  },
-  "academic_rigor": {
-    "phd": "certification",
-    "masters": "certification",
-    "published_research": "other"
-  }
+  "statistics": "technical_skill",
+  "probability": "technical_skill",
+  "linear_algebra": "technical_skill",
+  "optimization": "technical_skill",
+  "nlp": "core_skill",
+  "computer_vision": "core_skill",
+  "reinforcement_learning": "core_skill",
+  "predictive_modeling": "core_skill",
+  "time_series": "technical_skill",
+  "pandas": "tool",
+  "numpy": "tool",
+  "sql": "core_skill",
+  "spark": "tool",
+  "hadoop": "tool",
+  "tableau": "tool",
+  "power_bi": "tool",
+  "matplotlib": "tool",
+  "plotly": "tool",
+  "storytelling": "soft_skill",
+  "phd": "certification",
+  "masters": "certification",
+  "published_research": "other"
 }
