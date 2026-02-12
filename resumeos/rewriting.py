@@ -35,7 +35,7 @@ def rewrite_bullets(raw_text: str):
         
         if any(tech in content_lower for tech in ["python", "java", "sql", "aws", "docker"]):
             verb_pool = INTENT_VERBS["technical"]
-        elif any(anal in content_lower for tech in ["data", "research", "test", "metric"]):
+        elif any(term in content_lower for term in ["data", "research", "test", "metric"]):
             verb_pool = INTENT_VERBS["analytical"]
         else:
             verb_pool = INTENT_VERBS["default"]
