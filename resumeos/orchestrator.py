@@ -44,6 +44,6 @@ def full_system_resolution(
     </div>
     """
 
-    pdf_path, *extrs_data = export_to_pdf(name, email, school, degree, skills, bullets)
+    pdf_path, *extra_data = export_to_pdf(name, email, school, degree, skills, bullets)
 
     return preview_html, pdf_path
