@@ -31,4 +31,5 @@ def export_to_pdf(name, email, school, degree, skills, bullets):
 
     fd, path = tempfile.mkstemp(suffix=".pdf")
     pdf.output(path)
-    return path
+    
+    return str(pdf_path), True
