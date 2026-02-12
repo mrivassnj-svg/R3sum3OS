@@ -15,6 +15,7 @@ def test_load_invalid_ontology():
 def test_ontology_structure():
     """Verify that values in the JSON are valid weight categories."""
     data = load_ontology("software_engineer")
-    valid_categories = {"technical_skill", "soft_skill", "tool", "certification", "other"}
+    # Added 'core_skill' and 'methodology' to match our new JSONs
+    valid_categories = {"core_skill", "technical_skill", "soft_skill", "tool", "certification", "methodology", "other"}
     for category in data.values():
         assert category in valid_categories
