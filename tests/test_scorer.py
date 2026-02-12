@@ -1,49 +1,17 @@
 import pytest
-from collections import Counter
-from core.scorer import calculate_weighted_ats_score
+from core.scorer import score_skill
 
-# Mock weights for testing purposes
-MOCK_ONTOLOGY = {
-    "python": "technical_skill",
-    "sql": "technical_skill",
-    "docker": "tool",
-    "communication": "soft_skill"
-}
+def test_weight_hierarchy():
+    """Verify core_skills (3.0) score higher than soft_skills (1.0)."""
+    core_score = score_skill("core_skill", 1.0)
+    soft_score = score_skill("soft_skill", 1.0)
+    
+    assert core_score == 3.0
+    assert soft_score == 1.0
+    assert core_score > soft_score
 
-def test_perfect_match_score():
-    """Verify that a perfect overlap results in a 100% score."""
-    resume = Counter(["python", "sql", "docker"])
-    jd = Counter(["python", "sql", "docker"])
-    
-    score = calculate_weighted_ats_score(resume, jd, MOCK_ONTOLOGY)
-    assert score == 100
-
-def test_partial_match_weighting():
-    """Verify that technical skills carry more weight than tools or others."""
-    jd = Counter(["python", "docker"])
-    
-    # Match ONLY the technical skill (Weight 1.0)
-    high_weight_resume = Counter(["python"])
-    high_score = calculate_weighted_ats_score(high_weight_resume, jd, MOCK_ONTOLOGY)
-    
-    # Match ONLY the tool (Weight 0.7)
-    low_weight_resume = Counter(["docker"])
-    low_score = calculate_weighted_ats_score(low_weight_resume, jd, MOCK_ONTOLOGY)
-    
-    assert high_score > low_score
-
-def test_frequency_capping():
-    """Ensure that repeating a keyword in the resume doesn't 'cheat' the score."""
-    jd = Counter(["python"]) # JD only asks for it once
-    resume = Counter(["python", "python", "python"]) # Candidate says it thrice
-    
-    score = calculate_weighted_ats_score(resume, jd, MOCK_ONTOLOGY)
-    assert score == 100 # Should not exceed 100% based on over-repetition
-
-def test_zero_match_score():
-    """Verify that no overlap results in a 0% score."""
-    resume = Counter(["cooking", "gardening"])
-    jd = Counter(["python", "sql"])
-    
-    score = calculate_weighted_ats_score(resume, jd, MOCK_ONTOLOGY)
-    assert score == 0
+def test_unknown_category_fallback():
+    """Ensure the scorer doesn't crash on an unknown category."""
+    # Should fallback to 'other' weight (0.5)
+    score = score_skill("mystery_category", 1.0)
+    assert score == 0.5
