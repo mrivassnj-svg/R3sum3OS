@@ -28,3 +28,14 @@ def test_stopword_filtering():
     result = normalize_text("Python and the Java")
     assert "and" not in result
     assert "the" not in result
+
+def test_technical_character_preservation():
+    """Verify that tech-specific characters are NOT stripped."""
+    result = normalize_text("C++ and CI/CD")
+    assert "c++" in result
+    assert "ci/cd" in result
+
+def test_gap_closing():
+    """Verify that 'node . js' becomes 'node.js'."""
+    result = normalize_text("node . js")
+    assert "node.js" in result
