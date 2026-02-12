@@ -1,35 +1,31 @@
 {
-  "languages": {
-    "python": "core_skill",
-    "golang": "core_skill",
-    "rust": "core_skill",
-    "typescript": "core_skill"
-  },
-  "architecture": {
-    "microservices": "technical_skill",
-    "system_design": "core_skill",
-    "rest_api": "technical_skill",
-    "graphql": "technical_skill",
-    "serverless": "technical_skill"
-  },
-  "devops_infrastructure": {
-    "docker": "tool",
-    "kubernetes": "tool",
-    "terraform": "tool",
-    "aws": "tool",
-    "github_actions": "tool",
-    "cicd": "tool"
-  },
-  "engineering_practices": {
-    "tdd": "methodology",
-    "agile": "methodology",
-    "dry": "methodology",
-    "code_review": "soft_skill",
-    "documentation": "soft_skill"
-  },
-  "credentials": {
-    "pmp": "certification",
-    "aws_solutions_architect": "certification",
-    "computer_science_degree": "other"
-  }
+  "python": "core_skill",
+  "golang": "core_skill",
+  "rust": "core_skill",
+  "typescript": "core_skill",
+  "java": "technical_skill",
+  "javascript": "technical_skill",
+  "c++": "technical_skill",
+  "microservices": "technical_skill",
+  "system_design": "core_skill",
+  "rest_api": "technical_skill",
+  "graphql": "technical_skill",
+  "serverless": "technical_skill",
+  "docker": "tool",
+  "kubernetes": "tool",
+  "terraform": "tool",
+  "aws": "tool",
+  "github_actions": "tool",
+  "jenkins": "tool",
+  "cicd": "tool",
+  "tdd": "methodology",
+  "agile": "methodology",
+  "scrum": "methodology",
+  "dry": "methodology",
+  "code_review": "soft_skill",
+  "documentation": "soft_skill",
+  "mentoring": "soft_skill",
+  "pmp": "certification",
+  "aws_solutions_architect": "certification",
+  "computer_science_degree": "other"
 }
