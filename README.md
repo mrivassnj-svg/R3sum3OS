@@ -1,74 +1,34 @@
 # R3sum3OS: Ontology-Driven Resume Intelligence System
 
-🚀 **Bridging the gap between candidate data and industry-standard job ontologies.**
+🚀 **Turning Raw Experience (Rocks) into Professional Assets (Diamonds).**
 
-R3sum3OS is an intelligent resume optimization framework that utilizes "system resolution" to align experience with job requirements. Unlike traditional keyword scanners, this system performs semantic alignment of skills and experience without the "black box" randomness of Generative AI.
+R3sum3OS is a deterministic resume optimization framework. It aligns candidate experience with industry-standard job ontologies, providing a transparent, non-generative way to bridge the gap between human talent and machine-readable requirements.
 
 ---
 
 ## 🛠️ Repository Architecture
-* **`core/parser.py`**: The semantic engine that extracts and normalizes resume data.
-* **`ontology/`**: Role-specific JSON schemas (e.g., `software_engineer.json`) for system resolution.
-* **`resumeos/`**: The main logic module handling full system resolution and score mapping.
-* **`app.py`**: A Gradio-powered web interface for interactive processing.
-* **`tests/`**: Automated validation suite ensuring parser reliability via `test_parser.py`.
+* **`core/`**: The "Kernel" — Handles text normalization, weighted scoring, and schema validation.
+* **`ontology/`**: The "Knowledge Base" — Role-specific JSON dictionaries (e.g., `data_scientist.json`).
+* **`resumeos/`**: The "Logic Module" — Orchestrates the gap analysis and the "Diamond" rewriting engine.
+* **`app.py`**: The "Command Center" — A polished Gradio dashboard for interactive use.
+* **`tests/`**: The "Safety Net" — Automated test suite ensuring technical character preservation.
 
 ---
 
-## 💡 Why R3sum3OS Exists
-Many modern resume tools rewrite content without explanation or use LLMs that "invent" experience. R3sum3OS is built for:
-* **Transparency**: Understand *why* you score the way you do.
-* **Control**: You maintain the narrative; the system handles the optimization.
-* **Determinism**: The same input always produces the same high-quality output.
-* **ATS Compatibility**: Engineered for machine-readability first.
+## ✨ The Diamond Polish Workflow
+Unlike LLMs that "hallucinate" experience, R3sum3OS uses a **Deterministic Pipeline**:
 
----
-
-## ✨ Key Features
-
-### [+] ATS Keyword Normalization & Scoring
-Scans job descriptions and resume text to identify critical overlaps. It calculates a match score that is fully explainable and reproducible.
-
-### [+] Job-to-Resume Gap Analysis
-Identifies exactly what is missing. The system highlights "Matched Keywords" vs. "Missing Gaps," giving you a clear roadmap for manual adjustments.
-
-### [+] Deterministic Bullet Rewriting
-Raw experience is transformed using a fixed list of professional action verbs. 
-* **Rule 1**: No new experience is invented.
-* **Rule 2**: Meaning is preserved.
-* **Rule 3**: ATS-friendly action verbs are prioritized.
-
-### [+] Clean PDF Export
-Generates a conservative, high-compatibility PDF. It avoids tables, columns, and icons that typically break ATS scanners.
+1. **Extraction**: The `core/parser.py` preserves vital tech tokens like `C++`, `CI/CD`, and `Node.js`.
+2. **Scrutiny**: Your resume is measured against weighted categories (Core Skills, Tools, Methodologies).
+3. **Refinement**: The `rewriting.py` engine strips "weak" starts and injects high-impact action verbs.
+4. **Export**: A conservative, ATS-optimized PDF is generated, free of formatting traps.
 
 
 
 ---
 
-## 📐 System Architecture Overview
-R3sum3OS is a modular processing pipeline:
+## 📦 Installation
 
-1. **User Input** (Resume + Job Description)
-2. **Text Normalization** (Stopword removal & tokenization)
-3. **Bullet Rewrite Engine** (Action verb integration)
-4. **HTML Preview** (Real-time ATS score calculation)
-5. **PDF Export** (Final document generation via fpdf2)
-
----
-
-## 📦 Installation and Setup
-
-### Prerequisites
-* Python 3.9 or higher
-* pip package manager
-
-### Setup
 ```bash
-# Clone the repository
-git clone [https://github.com/mrivassnj-svg/R3sum3OS.git](https://github.com/mrivassnj-svg/R3sum3OS.git)
-
-# Install Dependencies
 pip install -r requirements.txt
-
-# Run Locally
 python app.py
